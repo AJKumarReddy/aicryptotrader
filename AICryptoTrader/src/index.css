@@ -1,0 +1,264 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 63%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 84% 60%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-scroll-infinite {
+    animation: scroll-infinite 30s linear infinite;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-track-gray-800 {
+    scrollbar-color: #374151 transparent;
+  }
+
+  .scrollbar-thumb-red-500 {
+    scrollbar-color: #ef4444 transparent;
+  }
+
+  /* Glassmorphism */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .glass-card-strong {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+  }
+
+  /* Electric Thunder Border Animation */
+  .electric-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .electric-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      #ef4444,
+      #ff6b6b,
+      #ef4444,
+      transparent,
+      transparent,
+      transparent,
+      transparent
+    );
+    border-radius: inherit;
+    animation: electric-rotate 3s linear infinite;
+    z-index: -1;
+  }
+
+  .electric-border::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  /* Futuristic Glow Effects */
+  .glow-red {
+    box-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444, 0 0 15px #ef4444, 0 0 20px #ef4444;
+  }
+
+  .glow-yellow {
+    box-shadow: 0 0 5px #eab308, 0 0 10px #eab308, 0 0 15px #eab308, 0 0 20px #eab308;
+  }
+
+  .btn-futuristic {
+    position: relative;
+    background: linear-gradient(45deg, #ef4444, #eab308);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 
+      0 0 10px rgba(239, 68, 68, 0.3),
+      0 0 20px rgba(239, 68, 68, 0.2),
+      0 0 30px rgba(239, 68, 68, 0.1);
+  }
+
+  .btn-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-futuristic:hover::before {
+    left: 100%;
+  }
+
+  .btn-futuristic:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 0 15px rgba(239, 68, 68, 0.5),
+      0 0 30px rgba(239, 68, 68, 0.3),
+      0 0 45px rgba(239, 68, 68, 0.2);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes electric-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ef4444;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
